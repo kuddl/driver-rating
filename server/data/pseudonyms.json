@@ -1,0 +1,10 @@
+[
+  { "icon": "kater", "alias": "Schwarzer Kater", "emoji": "🐈‍⬛" },
+  { "icon": "niederpferd", "alias": "Rosa Niederpferd", "emoji": "🐴" },
+  { "icon": "eichhoernchen", "alias": "Lustiges Eichhörnchen", "emoji": "🐿️" },
+  { "icon": "auerhahn", "alias": "Roter Auerhahn", "emoji": "🐓" },
+  { "icon": "dachs", "alias": "Müder Dachs", "emoji": "🦡" },
+  { "icon": "biber", "alias": "Stolzer Biber", "emoji": "🦫" },
+  { "icon": "eule", "alias": "Tanzende Eule", "emoji": "🦉" },
+  { "icon": "frosch", "alias": "Sportlicher Frosch", "emoji": "🐸" }
+]

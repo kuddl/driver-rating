@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Johannas Fahrt-Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF5EF;
+    --orange: #F39C12;
+    --ink: #1A1A1A;
+    --yellow: #F1C40F;
+    --red: #C0392B;
+    --shadow: 6px 6px 0 var(--ink);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Comic Neue", system-ui, sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #stage {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    height: 100dvh;
+    padding: 20px;
+  }
+  .screen {
+    position: absolute;
+    inset: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    transition: transform .4s ease, opacity .4s ease;
+  }
+  .screen.hidden { display: none; }
+  .screen.out-left { transform: translateX(-120%); opacity: 0; }
+  .screen.in-right { transform: translateX(120%); opacity: 0; }
+
+  h1, h2 {
+    font-family: "Bangers", cursive;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  h1 { font-size: 52px; line-height: 1; }
+  h2 { font-size: 36px; line-height: 1.05; }
+
+  .sign {
+    background: var(--orange);
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    padding: 14px 16px;
+    border-radius: 14px;
+    text-align: center;
+    transform: rotate(-1.5deg);
+  }
+  .card {
+    background: #fff;
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    border-radius: 18px;
+    padding: 20px;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    font-family: "Bangers", cursive;
+    font-size: 30px;
+    letter-spacing: 1px;
+    background: var(--orange);
+    color: var(--ink);
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform .08s;
+  }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn:disabled {
+    background: #ddd;
+    color: #777;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 3px 3px 0 #777;
+  }
+  .garage {
+    background: #fff;
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+    font-size: 64px;
+  }
+  .garage p {
+    font-size: 20px;
+    margin: 10px 0 0;
+    line-height: 1.25;
+  }
+  .progress {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    font-size: 16px;
+    font-family: "Bangers", cursive;
+    letter-spacing: 1px;
+  }
+  .dot {
+    width: 16px; height: 16px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: #fff;
+  }
+  .dot.done { background: var(--yellow); }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .answers button {
+    font-size: 48px;
+    padding: 18px 0;
+    background: #fff;
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform .08s;
+  }
+  .answers button:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--ink); }
+  .badge {
+    background: var(--yellow);
+    border: 4px solid var(--ink);
+    box-shadow: var(--shadow);
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+  }
+  .badge .emoji { font-size: 72px; line-height: 1; }
+  .badge .name {
+    font-family: "Bangers", cursive;
+    font-size: 34px;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+  .small { font-size: 16px; opacity: .75; text-align: center; }
+  .error { color: var(--red); }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- Start -->
+  <section id="start" class="screen">
+    <h1>JOHANNAS FAHRT-CHECK 🚗</h1>
+    <div class="sign">
+      Schnall dich an! Wie schlägt sich Johanna heute hinterm Lenkrad?
+    </div>
+    <div id="garage" class="garage hidden">
+      🏠🔒
+      <p>Johanna fährt gerade nicht Auto, hat keine Fahrt.</p>
+    </div>
+    <p class="small">5 kurze Fragen · Dauer: 30 Sek.</p>
+    <button id="startBtn" class="btn">FAHRT JETZT BEWERTEN</button>
+    <p class="small">(Prototyp: mit ?inaktiv im Link zeigt den Garagen-Zustand)</p>
+  </section>
+
+  <!-- Frage -->
+  <section id="question" class="screen hidden">
+    <div class="progress" id="progress"></div>
+    <div class="card" id="questionText"></div>
+    <div class="answers">
+      <button data-score="1" aria-label="schlecht">😬</button>
+      <button data-score="2" aria-label="okay">😐</button>
+      <button data-score="3" aria-label="super">😎</button>
+    </div>
+  </section>
+
+  <!-- Abschluss -->
+  <section id="done" class="screen hidden">
+    <h2>BEWERTUNG GESPEICHERT!</h2>
+    <p class="card" style="font-size:20px; margin:0;">
+      Vielen Dank fürs Mitmachen! Beehre uns bald wieder im Auto.
+    </p>
+    <div class="badge">
+      <div>DEIN OFFIZIELLES PSEUDONYM</div>
+      <div class="emoji" id="pseudoEmoji">🐈‍⬛</div>
+      <div class="name" id="pseudoName">SCHWARZER KATER</div>
+    </div>
+    <button id="againBtn" class="btn">NOCHMAL BEWERTEN</button>
+  </section>
+
+</div>
+
+<script>
+  // Fragen-Pool (später aus JSON)
+  const QUESTIONS = [
+    "Hat Johanna heute geblinkt? (Oder war es nur die Handbewegung?)",
+    "Hat sie den Schulterblick gemacht?",
+    "Wie war das Bremsen und Anfahren?",
+    "Wurde am Zebrastreifen gehalten?",
+    "Wie war die Luftqualität im Raum?",
+    "War die Musik in Ordnung?",
+    "Gab es ein gutes Gespräch oder nur Stoßgebete?",
+    "Wie entspannt war die Fahrt insgesamt?",
+    "Wie war das Einparken?",
+    "Hat sie sich über andere Verkehrsteilnehmer aufgeregt?",
+    "Hat sie beim Überholen genug Abstand gelassen?",
+    "Wie war die Stimmung im Auto?",
+    "Hat sie bei Gelb angehalten oder Vollgas gegeben?",
+    "Wie gut hat sie den Rückspiegel genutzt?",
+    "Wie war der Fahrstil bei Regen?",
+    "Gab es eine Pinkelpause, wenn man sie gebraucht hat?",
+    "Gab es einen spontanen Halt für Eis oder Kaffee?",
+    "„Du kommst hier nicht vorbei!“ – Wurden rote Ampeln wirklich gehalten?",
+    "„Houston, wir haben ein Problem.“ – Hat sie ein Problem souverän gelöst?",
+    "„Hasta la vista, Baby.“ – Hat sie eine Parklücke gefunden, in die niemand sonst passt?"
+  ];
+
+  // Pseudonyme mit Emoji (Prototyp)
+  const PSEUDONYMS = [
+    { name: "Schwarzer Kater", emoji: "🐈‍⬛" },
+    { name: "Rosa Niederpferd", emoji: "🐴" },
+    { name: "Lustiges Eichhörnchen", emoji: "🐿️" },
+    { name: "Roter Auerhahn", emoji: "🐓" },
+    { name: "Müder Dachs", emoji: "🦡" },
+    { name: "Stolzer Biber", emoji: "🦫" },
+    { name: "Tanzende Eule", emoji: "🦉" },
+    { name: "Sportlicher Frosch", emoji: "🐸" }
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const screens = { start: $("start"), question: $("question"), done: $("done") };
+  const params = new URLSearchParams(location.search);
+
+  let queue = [];
+  let index = 0;
+  let busy = false;
+
+  function show(name, dir = null) {
+    Object.values(screens).forEach(s => s.classList.add("hidden"));
+    const el = screens[name];
+    el.classList.remove("hidden", "out-left", "in-right");
+    if (dir === "in") el.classList.add("in-right");
+    el.offsetHeight; // reflow für Animation
+    el.classList.remove("in-right");
+  }
+
+  function pickFive() {
+    const pool = [...QUESTIONS];
+    const picked = [];
+    while (picked.length < 5 && pool.length) {
+      picked.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+    }
+    return picked;
+  }
+
+  function renderStart() {
+    // Prototyp-Schalter: ?aktiv oder ?inaktiv
+    const aktiv = params.get("inaktiv") === null;
+    $("garage").classList.toggle("hidden", aktiv);
+    $("startBtn").disabled = !aktiv;
+    show("start");
+  }
+
+  function renderQuestion() {
+    const progress = $("progress");
+    progress.innerHTML = "";
+    for (let i = 0; i < queue.length; i++) {
+      const d = document.createElement("span");
+      d.className = "dot" + (i < index ? " done" : "");
+      progress.appendChild(d);
+    }
+    $("questionText").textContent = `Frage ${index + 1} von ${queue.length}: ${queue[index]}`;
+  }
+
+  function startRating() {
+    queue = pickFive();
+    index = 0;
+    renderQuestion();
+    show("question");
+  }
+
+  function answer(score) {
+    if (busy) return;
+    busy = true;
+    const current = screens.question;
+    current.classList.add("out-left");
+    setTimeout(() => {
+      index++;
+      if (index < queue.length) {
+        renderQuestion();
+        show("question", "in");
+        requestAnimationFrame(() => screens.question.classList.remove("in-right"));
+      } else {
+        finish();
+      }
+      busy = false;
+    }, 350);
+  }
+
+  function finish() {
+    const p = PSEUDONYMS[Math.floor(Math.random() * PSEUDONYMS.length)];
+    $("pseudoName").textContent = p.name.toUpperCase();
+    $("pseudoEmoji").textContent = p.emoji;
+    show("done", "in");
+    requestAnimationFrame(() => screens.done.classList.remove("in-right"));
+  }
+
+  $("startBtn").addEventListener("click", startRating);
+  $("againBtn").addEventListener("click", startRating);
+  document.querySelectorAll(".answers button").forEach(btn => {
+    btn.addEventListener("click", () => answer(Number(btn.dataset.score)));
+  });
+
+  renderStart();
+</script>
+</body>
+</html>

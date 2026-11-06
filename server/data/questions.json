@@ -1,0 +1,22 @@
+[
+  { "id": 1, "text": "Hat Johanna heute geblinkt? (Oder war es nur die Handbewegung?)" },
+  { "id": 2, "text": "Hat sie den Schulterblick gemacht?" },
+  { "id": 3, "text": "Wie war das Bremsen und Anfahren?" },
+  { "id": 4, "text": "Wurde am Zebrastreifen gehalten?" },
+  { "id": 5, "text": "Wie war die Luftqualität im Raum?" },
+  { "id": 6, "text": "War die Musik in Ordnung?" },
+  { "id": 7, "text": "Gab es ein gutes Gespräch oder nur Stoßgebete?" },
+  { "id": 8, "text": "Wie entspannt war die Fahrt insgesamt?" },
+  { "id": 9, "text": "Wie war das Einparken?" },
+  { "id": 10, "text": "Hat sie sich über andere Verkehrsteilnehmer aufgeregt?" },
+  { "id": 11, "text": "Hat sie beim Überholen genug Abstand gelassen?" },
+  { "id": 12, "text": "Wie war die Stimmung im Auto?" },
+  { "id": 13, "text": "Hat sie bei Gelb angehalten oder Vollgas gegeben?" },
+  { "id": 14, "text": "Wie gut hat sie den Rückspiegel genutzt?" },
+  { "id": 15, "text": "Wie war der Fahrstil bei Regen?" },
+  { "id": 16, "text": "Gab es eine Pinkelpause, wenn man sie gebraucht hat?" },
+  { "id": 17, "text": "Gab es einen spontanen Halt für Eis oder Kaffee?" },
+  { "id": 18, "text": "„Du kommst hier nicht vorbei!“ – Wurden rote Ampeln wirklich gehalten?" },
+  { "id": 19, "text": "„Houston, wir haben ein Problem.“ – Hat sie ein Problem souverän gelöst?" },
+  { "id": 20, "text": "„Hasta la vista, Baby.“ – Hat sie eine Parklücke gefunden, in die niemand sonst passt?" }
+]

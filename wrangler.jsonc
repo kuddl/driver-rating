@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "driver-rating",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-07-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".output/public"
+  },
+  "d1_databases": [
+    {
+      "binding": "driver_rating_db",
+      "database_name": "driver-rating-db",
+      "database_id": "6b11692e-156d-4ece-9eff-7ef730db0dfe"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "driverrating.familiesailer.com",
+      "custom_domain": true
+    }
+  ]
+}

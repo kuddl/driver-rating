@@ -22,7 +22,20 @@ export async function activeTrip(env: Env): Promise<TripRow | null> {
     .prepare('SELECT * FROM trips WHERE driver_id = ? AND active_until > ? ORDER BY started_at DESC, id DESC LIMIT 1')
     .bind(DRIVER_ID, nowSeconds())
     .first()
-  return (row as TripRow | null) ?? null
+  if (row) return row as TripRow
+  if (!import.meta.dev) return null
+
+  const now = nowSeconds()
+  const dummy = await env.driver_rating_db
+    .prepare(`INSERT INTO trips (id, driver_id, name, destination, city, comment, date, started_at, active_until)
+              VALUES (-1, ?, ?, ?, ?, ?, ?, ?, ?)
+              ON CONFLICT(id) DO UPDATE SET date = excluded.date,
+                started_at = excluded.started_at, active_until = excluded.active_until
+              RETURNING *`)
+    .bind(DRIVER_ID, 'Dummy-Fahrt', 'Testziel', 'Teststadt', 'Lokale Entwicklung',
+      new Date().toISOString().slice(0, 10), now, sessionEnd(now))
+    .first()
+  return dummy as TripRow
 }
 
 export async function tripCount(env: Env): Promise<number> {

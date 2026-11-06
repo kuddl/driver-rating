@@ -4,6 +4,11 @@ interface Q {
   id: number;
   text: string;
 }
+interface Character {
+  alias: string;
+  icon: string;
+  emoji: string;
+}
 type Phase = "loading" | "garage" | "start" | "question" | "done";
 
 useHead({ title: "Mitfahrer" });
@@ -12,7 +17,8 @@ const phase = ref<Phase>("loading");
 const questions = ref<Q[]>([]);
 const index = ref(0);
 const answers = ref<{ questionId: number; score: number }[]>([]);
-const result = ref<{ alias: string; icon: string; emoji: string } | null>(null);
+const character = ref<Character | null>(null);
+const result = ref<Character | null>(null);
 const busy = ref(false);
 const error = ref("");
 const current = computed(() => questions.value[index.value]);
@@ -31,8 +37,10 @@ async function loadStatus() {
 async function startRating() {
   error.value = "";
   try {
-    const r = await $fetch<{ questions: Q[] }>("/api/rating/questions");
+    const r = await $fetch<{ questions: Q[]; character: Character }>("/api/rating/questions");
     questions.value = r.questions;
+    character.value = r.character;
+    result.value = null;
     index.value = 0;
     answers.value = [];
     phase.value = "question";
@@ -58,7 +66,10 @@ async function answer(score: number) {
 async function submit() {
   busy.value = true;
   try {
-    result.value = await $fetch("/api/rating/submit", { method: "POST", body: { answers: answers.value } });
+    result.value = await $fetch("/api/rating/submit", {
+      method: "POST",
+      body: { answers: answers.value, characterIcon: character.value?.icon },
+    });
     phase.value = "done";
   } catch (e: any) {
     if (e?.statusCode === 409) {
@@ -75,7 +86,6 @@ async function submit() {
 }
 
 onMounted(loadStatus);
-phase.value = "done";
 </script>
 
 <template>
@@ -104,23 +114,25 @@ phase.value = "done";
           <div class="sign">Schnall dich an! Wie schlägt sich Johanna heute hinterm Lenkrad?</div>
           <p class="small">5 kurze Fragen · Dauer: 30 Sek.</p>
           <p v-if="error" class="error">{{ error }}</p>
-          <button class="btn" @click="startRating">FAHRT JETZT BEWERTEN!</button>
-          <div class="footer-row">
+          <button class="btn ticket" @click="startRating">FAHRT JETZT BEWERTEN!</button>
+          <!-- <div class="footer-row">
             <span class="small">Fortschritt</span>
-            <img class="art-avatar" src="/art/avatar.png" alt="Johanna" />
-          </div>
+            <img class="art-avatar" src="/art/avatar.webp" alt="Johanna" />
+          </div> -->
         </div>
       </template>
 
       <template v-else-if="phase === 'question' && current">
         <div class="frame">
-          <div class="footer-row">
-            <div class="dots">
-              <span v-for="(q, i) in questions" :key="q.id" class="dot" :class="{ done: i < index }" />
+         
+          <div v-if="character" class="ticket">
+            <img class="art-animal" :src="`/art/animals/${character.icon}.webp`" :alt="character.alias" />
+            <div>
+              <div class="label">Du bist Mitfahrer</div>
+              <div class="name ">{{ character.alias.toUpperCase() }}</div>
             </div>
-            <img class="art-avatar" src="/art/avatar.png" alt="Johanna" />
           </div>
-          <div :key="index" class="card slide-in">
+          <div :key="index" class="card slide-in ticket">
             Frage {{ index + 1 }} von {{ questions.length }}: {{ current.text }}
           </div>
           <div class="answers-col">
@@ -131,22 +143,27 @@ phase.value = "done";
             <button class="answer" :disabled="busy" @click="answer(3)"><span class="face">😎</span>Super!</button>
           </div>
           <p v-if="error" class="error">{{ error }}</p>
+           <div class="footer-row">
+            <div class="dots">
+              <span v-for="(q, i) in questions" :key="q.id" class="dot" :class="{ done: i < index }" />
+            </div>
+            <img class="art-avatar" src="/art/avatar.webp" alt="Johanna" />
+          </div>
         </div>
       </template>
 
       <template v-else-if="phase === 'done' && result">
         <div class="frame">
-          <img class="art burst-img" src="/art/burst.png" alt="Vielen Dank!" />
-          <p class="card" style="font-size: 20px; margin: 0; text-align: center">Beehre uns bald wieder im Auto!</p>
+          <img class="art burst-img" src="/art/burst.webp" alt="Vielen Dank!" />
+          <p class="ticket" style="font-size: 20px; margin: 0; text-align: center">Beehre uns bald wieder im Auto!</p>
           <div class="ticket">
-            <img class="art-animal" :src="`/art/animals/${result.icon}.png`" :alt="result.alias" />
+            <img class="art-animal" :src="`/art/animals/${result.icon}.webp`" :alt="result.alias" />
             <div>
-              <div class="label">Du bist Mitfahrer</div>
-              <div class="name">{{ result.alias.toUpperCase() }}</div>
+              <div class="name ">{{ result.alias.toUpperCase() }}</div>
             </div>
           </div>
-          <button class="btn" @click="startRating">NOCHMAL BEWERTEN!</button>
-        </div>
+          <button class="btn answer "  @click="startRating">NOCHMAL BEWERTEN!</button>
+        </div> 
       </template>
     </div>
   </div>

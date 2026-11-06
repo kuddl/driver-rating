@@ -50,6 +50,7 @@ export function logout(event: H3Event): void {
 }
 
 export async function isAuthed(event: H3Event): Promise<boolean> {
+  if (import.meta.dev) return true
   const cookie = getCookie(event, COOKIE)
   if (!cookie) return false
   return cookie === (await tokenFor(getEnv(event)))

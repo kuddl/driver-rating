@@ -9,7 +9,7 @@ interface Answer { questionId: number, score: number }
 // Speichert eine komplette Bewertung (5 Antworten) anonym mit Pseudonym (#6).
 export default defineEventHandler(async (event) => {
   const env = getEnv(event)
-  const body = await readBody<{ answers?: Answer[] }>(event)
+  const body = await readBody<{ answers?: Answer[], characterIcon?: string }>(event)
   const answers = body?.answers
 
   const validIds = new Set(questions.map(q => q.id))
@@ -26,7 +26,12 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 409, message: 'Gerade keine Fahrt aktiv' })
   }
 
-  const p = pseudonyms[Math.floor(Math.random() * pseudonyms.length)]!
+  const p = body?.characterIcon === undefined
+    ? pseudonyms[Math.floor(Math.random() * pseudonyms.length)]!
+    : pseudonyms.find(character => character.icon === body.characterIcon)
+  if (!p) {
+    throw createError({ statusCode: 400, message: 'Ungültiger Charakter' })
+  }
   const inserted = await env.driver_rating_db
     .prepare('INSERT INTO ratings (trip_id, created_at, alias, icon) VALUES (?, ?, ?, ?) RETURNING id')
     .bind(trip.id, nowSeconds(), p.alias, p.icon)

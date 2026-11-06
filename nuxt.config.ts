@@ -16,6 +16,12 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'cloudflare_module'
+    preset: 'cloudflare_module',
+    cloudflare: {
+      dev: {
+        configPath: 'wrangler.jsonc',
+        persistDir: '.wrangler/state/v3',
+      },
+    },
   }
 })

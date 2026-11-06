@@ -32,7 +32,7 @@ Offene Punkte für das Gespräch:
 2. **Grafiken:** Eigene Grafiken als SVG im Comic-Stil, keine Gemini-Bilder. Die Vorlagen sind nur Referenz.
 3. **Johanna-Avatar:** Illustration im Comic-Stil unten rechts neben den Fortschrittspunkten. Kein Foto.
 4. **Geltungsbereich:** Alle Seiten im neuen Look: Mitfahrer (Start, Frage, Abschluss), QR-Seite `/mitfahrer`, Startformular `/johanna`. Die Auswertung bleibt unverändert.
-5. **Pseudonym-Icons:** Alle acht als SVG im selben Stil: Schwarzer Kater, Rosa Niederpferd, Lustiges Eichhörnchen, Roter Auerhahn, Müder Dachs, Stolzer Biber, Tanzende Eule, Sportlicher Frosch.
+5. **Pseudonym-Icons:** Alle acht als SVG im selben Stil: Schwarzer Kater, Rosa Einhorn, Lustiges Eichhörnchen, Roter Auerhahn, Müder Dachs, Stolzer Biber, Tanzende Eule, Sportlicher Frosch.
 6. **Hintergrund:** Vollbild orange (`#F39C12`), Karten und Buttons mit Comic-Rahmen und Offset-Schatten. Der helle Hintergrund (`#FAF5EF`) bleibt auf der Auswertung und beim QR-Druck.
 
 **Hinweis:** Im Ordner `design/` liegen nur noch drei der Gemini-Bilder. Die anderen zwei (2 und 3) sind nicht mehr da.

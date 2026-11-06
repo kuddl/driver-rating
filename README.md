@@ -26,21 +26,38 @@ Willkommen im Auto! Hier wird Johanna hinterm Lenkrad bewertet. Mitfahrer scanne
 
 ```bash
 npm install
-npx wrangler d1 migrations apply driver-rating-db --local
-npm run dev:cf
+npm run dev
 ```
 
-Danach läuft die Seite unter `http://localhost:8787`.
+Danach läuft die Seite unter `http://localhost:3000` mit Hot Reload. Wrangler ist
+bereits installiert; Nuxt nutzt darüber die lokale D1-Datenbank. Die Migrationen
+werden beim Start automatisch angewendet. Die lokale Datenbank ist von der
+Live-Datenbank getrennt und bleibt unter `.wrangler/state/v3` erhalten.
 
-Für den Login lokal eine Datei `.dev.vars` im Projektordner anlegen:
+- `/johanna`, `/mitfahrer` und `/auswertung` sind ohne Login zugänglich.
+- Auf `/` kann jederzeit eine Fahrt bewertet werden. Wenn keine Fahrt aktiv ist,
+  wird automatisch eine Dummy-Fahrt angelegt oder erneut aktiviert.
+- Dummy-Bewertungen werden wirklich lokal gespeichert und erscheinen in der
+  Auswertung. Von dort lässt sich auch die Fahrt-Detailansicht öffnen.
+- Echte Fahrten lassen sich weiterhin über `/johanna` starten.
 
-```
+Die Login-Freigabe und die Dummy-Fahrt gelten nur im Nuxt-Entwicklungsserver
+(`import.meta.dev`), nicht im Produktionsbuild. Ein lokales Passwort ist für
+`npm run dev` nicht nötig.
+
+### Produktionsnah lokal testen
+
+`npm run dev:cf` baut die Anwendung und startet sie unter `http://localhost:8787`
+direkt in Wrangler, ohne Hot Reload und ohne Entwicklungsfreigaben. Hier gelten
+Login und die normale 15-Minuten-Fahrt. Zuvor einmal `npm run db:local` ausführen
+und für den Login eine Datei `.dev.vars` im Projektordner anlegen:
+
+```dotenv
 AUTH_PASSWORD=dein-entwicklungspasswort
 ```
 
-Die Datei steht in `.gitignore`. Die lokale Datenbank ist von der Live-Datenbank getrennt.
-
-> `npm run dev` startet nur Nuxt ohne Cloudflare-Umgebung. Für Login und Datenbank also `npm run dev:cf` verwenden.
+Die Datei steht in `.gitignore`. Beide lokalen Startvarianten nutzen dieselbe
+lokale Datenbank, niemals die Live-Datenbank.
 
 ## Deploy
 

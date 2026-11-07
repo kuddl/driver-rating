@@ -97,7 +97,7 @@ onMounted(loadStatus);
 
       <template v-else-if="phase === 'garage'">
         <div class="frame">
-          <h1>JOHANNAS FAHRT-CHECK 🚗</h1>
+          <h1>JOHANNAS FAHRT-CHECK</h1>
           <div class="card garage">
             🏠🔒
             <p>Johanna fährt gerade nicht Auto, hat keine Fahrt.</p>
@@ -110,7 +110,7 @@ onMounted(loadStatus);
       <template v-else-if="phase === 'start'">
         <div class="frame">
           <h1>JOHANNAS FAHRT-CHECK</h1>
-          <img class="art art-car" src="/art/car.svg" alt="Auto" />
+          <img class="art art-car" src="/art/car.png" alt="Auto" />
           <div class="sign">Schnall dich an! Wie schlägt sich Johanna heute hinterm Lenkrad?</div>
           <p class="small">5 kurze Fragen · Dauer: 30 Sek.</p>
           <p v-if="error" class="error">{{ error }}</p>

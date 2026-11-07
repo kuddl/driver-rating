@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "npm run db:local && nuxt dev",
+    "dev:lan": "npm run db:local && nuxt dev --host 0.0.0.0 --port 3000",
     "db:local": "wrangler d1 migrations apply driver-rating-db --local",
     "deploy": "npm run build && wrangler deploy",
     "generate": "nuxt generate",

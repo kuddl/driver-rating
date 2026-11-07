@@ -158,6 +158,7 @@ h3 { font-family: "Bangers", cursive; font-weight: 400; letter-spacing: 1px; fon
   font-size: 34px;
   letter-spacing: 1px;
   margin-top: 6px;
+  word-break: break-word;
 }
 
 .field { display: flex; flex-direction: column; gap: 6px; }
@@ -313,4 +314,5 @@ table.stats td.num { text-align: right; white-space: nowrap; }
   font-size: 34px;
   line-height: 1.05;
   letter-spacing: 1px;
+  word-break: break-word;
 }

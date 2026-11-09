@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 409, message: 'Gerade keine Fahrt aktiv' })
   }
   const pool = [...questions]
-  const picked: { id: number, text: string }[] = []
+  const picked: typeof questions[number][] = []
   while (picked.length < 5 && pool.length) {
     picked.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]!)
   }

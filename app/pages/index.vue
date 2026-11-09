@@ -1,8 +1,17 @@
 <script setup lang="ts">
 // Mitfahrer-Seite (#9/#6): Garage oder Start, 5 Fragen mit drei Emoji-Stufen, Abschluss mit Pseudonym.
+interface AnswerOption {
+  emoji: string;
+  label: string;
+}
 interface Q {
   id: number;
   text: string;
+  answers?: {
+    bad?: AnswerOption;
+    ok?: AnswerOption;
+    good?: AnswerOption;
+  };
 }
 interface Character {
   alias: string;
@@ -137,10 +146,17 @@ onMounted(loadStatus);
           </div>
           <div class="answers-col">
             <button class="answer" :disabled="busy" @click="answer(1)">
-              <span class="face">😬</span>Johanna, bitte!
+              <span class="face">{{ current.answers?.bad?.emoji || '😬' }}</span>
+              {{ current.answers?.bad?.label || 'Johanna, bitte!' }}
             </button>
-            <button class="answer" :disabled="busy" @click="answer(2)"><span class="face">😐</span>Naja..</button>
-            <button class="answer" :disabled="busy" @click="answer(3)"><span class="face">😎</span>Super!</button>
+            <button class="answer" :disabled="busy" @click="answer(2)">
+              <span class="face">{{ current.answers?.ok?.emoji || '😐' }}</span>
+              {{ current.answers?.ok?.label || 'Naja..' }}
+            </button>
+            <button class="answer" :disabled="busy" @click="answer(3)">
+              <span class="face">{{ current.answers?.good?.emoji || '😎' }}</span>
+              {{ current.answers?.good?.label || 'Super!' }}
+            </button>
           </div>
           <p v-if="error" class="error">{{ error }}</p>
            <div class="footer-row">

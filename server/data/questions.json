@@ -1,22 +1,794 @@
 [
-  { "id": 1, "text": "Hat Johanna heute geblinkt? (Oder war es nur die Handbewegung?)" },
-  { "id": 2, "text": "Hat sie den Schulterblick gemacht?" },
-  { "id": 3, "text": "Wie war das Bremsen und Anfahren?" },
-  { "id": 4, "text": "Wurde am Zebrastreifen gehalten?" },
-  { "id": 5, "text": "Wie war die Luftqualität im Raum?" },
-  { "id": 6, "text": "War die Musik in Ordnung?" },
-  { "id": 7, "text": "Gab es ein gutes Gespräch oder nur Stoßgebete?" },
-  { "id": 8, "text": "Wie entspannt war die Fahrt insgesamt?" },
-  { "id": 9, "text": "Wie war das Einparken?" },
-  { "id": 10, "text": "Hat sie sich über andere Verkehrsteilnehmer aufgeregt?" },
-  { "id": 11, "text": "Hat sie beim Überholen genug Abstand gelassen?" },
-  { "id": 12, "text": "Wie war die Stimmung im Auto?" },
-  { "id": 13, "text": "Hat sie bei Gelb angehalten oder Vollgas gegeben?" },
-  { "id": 14, "text": "Wie gut hat sie den Rückspiegel genutzt?" },
-  { "id": 15, "text": "Wie war der Fahrstil bei Regen?" },
-  { "id": 16, "text": "Gab es eine Pinkelpause, wenn man sie gebraucht hat?" },
-  { "id": 17, "text": "Gab es einen spontanen Halt für Eis oder Kaffee?" },
-  { "id": 18, "text": "„Du kommst hier nicht vorbei!“ – Wurden rote Ampeln wirklich gehalten?" },
-  { "id": 19, "text": "„Houston, wir haben ein Problem.“ – Hat sie ein Problem souverän gelöst?" },
-  { "id": 20, "text": "„Hasta la vista, Baby.“ – Hat sie eine Parklücke gefunden, in die niemand sonst passt?" }
+  {
+    "id": 1,
+    "text": "Hat Johanna heute geblinkt? (Oder war es nur eine Handbewegung?)",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Hilfe!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Manchmal.."
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Immer!"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "text": "Hat sie den Schulterblick gemacht?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Schulterblick vergessen!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Flüchtiger Blick"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "360°-Drehung wie eine Eule! 🦉"
+      }
+    }
+  },
+  {
+    "id": 3,
+    "text": "War die Bremsung sanft oder hat dein Kopf genickt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Schleudertrauma!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Etwas Ruckeln"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Wie auf Wolken!"
+      }
+    }
+  },
+  {
+    "id": 4,
+    "text": "Wurde am Zebrastreifen gehalten?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Fußgänger mussten rennen!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Knapp gebremst"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Vorbildlich gewartet! 🚶"
+      }
+    }
+  },
+  {
+    "id": 5,
+    "text": "Wie war die Luftqualität in der Fahrkabine?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Kalter Angstschweiß!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Mäßig durchlüftet"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Frische Alpenluft! 🍃"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "text": "Musikgeschmack & allgemeine Wohlfühl-Stimmung im Auto?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Stille erbeten!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Passabel"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Konzertreif! 🎶"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "text": "Gab es ein gutes Gespräch oder nur stumme Stoßgebete?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Nur Gebete!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Ganz okay"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Top Unterhaltung!"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "text": "Wie lautet das allgemeine Fazit dieser Fahrt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Brauche Beruhigungstee!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Hauptsache überlebt!"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Bereit für die Formel 1! 🏆"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "text": "Wie lief das Rückwärts-Einparken in die Lücke?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "12 Versuche & Schweiß!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Im 2. Versuch drin"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Auf Anhieb perfekt! 🅿️"
+      }
+    }
+  },
+  {
+    "id": 10,
+    "text": "Hat sie sich über andere Verkehrsteilnehmer aufgeregt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Schimpfkanonade vom Feinsten!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Leises Kopfschütteln"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Zen-Meisterin hinterm Steuer! 🧘"
+      }
+    }
+  },
+  {
+    "id": 11,
+    "text": "Hat sie beim Überholen genug Abstand gelassen?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Spiegel fast rasiert!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Etwas kuschelig"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Sicherheitsabstand perfekt! 🚗"
+      }
+    }
+  },
+  {
+    "id": 12,
+    "text": "Welcher Song beschreibt die Stimmung im Auto am besten?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Steh auf, wenn du am Boden bist.."
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Kein Alkohol ist auch 'ne Lösung"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "An Tagen wie diesen! 🎶"
+      }
+    }
+  },
+  {
+    "id": 13,
+    "text": "Reaktion der Fahrerin auf die spontan gelbe Ampel?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Neo-Zeitlupe durchgerutscht 🕶️"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Vollstopp an der Linie"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Perfekt dosierte Bremsung!"
+      }
+    }
+  },
+  {
+    "id": 14,
+    "text": "Wie war die Blickführung über den Innenspiegel?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Vor Schreck verstellt!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Gelegentlich reingeschaut"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Perfekter 360°-Blick 👁️"
+      }
+    }
+  },
+  {
+    "id": 15,
+    "text": "Wie war der Fahrstil bei Regen?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Aquaplaning-Panik!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Vorsichtig gerollt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Kapitänin auf stürmischer See! 🌧️"
+      }
+    }
+  },
+  {
+    "id": 16,
+    "text": "Gab es eine Pinkelpause, wenn man sie gebraucht hat?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Beine zusammenkneifen!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Nach langem Betteln"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Raststätte sofort angesteuert! 🚽"
+      }
+    }
+  },
+  {
+    "id": 17,
+    "text": "Gab es einen spontanen Halt für Eis oder Kaffee?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Strikter Zeitplan, nix da!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Nur Tankstellen-Kaffee"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Große Portion Eis spendiert! 🍦"
+      }
+    }
+  },
+  {
+    "id": 18,
+    "text": "„Du kommst hier nicht vorbei!“ – Wurden rote Ampeln wirklich gehalten?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Dunkelgelb/Kirschrot!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Vollbremsung an der Linie"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Gandalf wäre stolz! 🧙"
+      }
+    }
+  },
+  {
+    "id": 19,
+    "text": "„Houston, wir haben ein Problem.“ – Hat sie ein Problem souverän gelöst?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Kollaps vorprogrammiert!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Mit Schweißperlen gelöst"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Apollo 13 gerettet! 🚀"
+      }
+    }
+  },
+  {
+    "id": 20,
+    "text": "„Hasta la vista, Baby.“ – Hat sie eine Parklücke gefunden, in die niemand sonst passt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Weitergesucht.."
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Irgendwie reingequetscht"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Terminator-Präzision! 🤖"
+      }
+    }
+  },
+  {
+    "id": 21,
+    "text": "Richtige Ausfahrt auf Anhieb erwischt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Verfahren!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Nach Wendemanöver"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Punktgenau!"
+      }
+    }
+  },
+  {
+    "id": 22,
+    "text": "Wurden Abbiegemanöver rechtzeitig angekündigt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Völlige Überraschung!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Erst im Abbiegen geblinkt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Telepathisch vorausgeplant! ↪️"
+      }
+    }
+  },
+  {
+    "id": 23,
+    "text": "Gab es musikalische Rückmeldungen von anderen Autos?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Hupkonzert wie beim WM-Sieg!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Ein einzelnes Verwarn-Hupen"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Absolute Funkstille! 🎺"
+      }
+    }
+  },
+  {
+    "id": 24,
+    "text": "Wie war die akustische Rückmeldung der Reifen in den Kurven?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Hollywood-Action-Soundtrack!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Ein kurzes Quietschen"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Lautlose Formel-1-Linie 🏎️"
+      }
+    }
+  },
+  {
+    "id": 25,
+    "text": "Musste das ABS-System spontan die Führung übernehmen?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Pedal hat gegliedert!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Ein kurzes Rattern"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Kein ABS nötig 🦶"
+      }
+    }
+  },
+  {
+    "id": 26,
+    "text": "Wie oft hat der Motor eine ungeplante Denkpause eingelegt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Känguru-Hüpfen!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Einmal gestottert"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Seidenweiches Anfahren 🦘"
+      }
+    }
+  },
+  {
+    "id": 27,
+    "text": "Wie gut war die Reaktionszeit bei Grün?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Fast eingeschlafen"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Solider Start"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Raketenstart! 🚀"
+      }
+    }
+  },
+  {
+    "id": 28,
+    "text": "Ausweichen von Hindernissen auf der Fahrbahn?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Volle Kanne auf die Banane!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Schildkröte ausgewichen"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "eSport-Profi! 🍌🐢"
+      }
+    }
+  },
+  {
+    "id": 29,
+    "text": "Zustand der Außenspiegel nach dem Manövrieren?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Im Gebüsch gelassen.."
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Leicht eingeklappt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Beide noch dran! 🪞"
+      }
+    }
+  },
+  {
+    "id": 30,
+    "text": "Wie lief der Tankvorgang an der Zapfsäule?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Zapfsäulen-Seite verfehlt"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Nach Rangieren geparkt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Perfekter F1-Boxenstopp! ⛽"
+      }
+    }
+  },
+  {
+    "id": 31,
+    "text": "Navigation & Finden des Zielorts?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Unfreiwillige Stadtrundfahrt"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Nach 2-mal Wenden da"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Navi war überflüssig! 🗺️"
+      }
+    }
+  },
+  {
+    "id": 32,
+    "text": "Wie entspannt war die Fahrerin im Kreisverkehr?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Panikblick & Schweiß!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Konzentriertes Schweigen"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Locker gepfiffen! 🎶"
+      }
+    }
+  },
+  {
+    "id": 33,
+    "text": "Verhalten gegenüber vorbeifahrenden Streifenwagen?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Nervöser Schweißausbruch"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Hände krampfhaft auf 10 & 2 Uhr"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Gekonnt wie ein Agent! 🚓"
+      }
+    }
+  },
+  {
+    "id": 34,
+    "text": "Musste Beifahrer Papa/Mama den Haltegriff oben nutzen?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Fast abgerissen!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Kurz festgehalten"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Hände im Schoß! ✊"
+      }
+    }
+  },
+  {
+    "id": 35,
+    "text": "Wie fühlte sich das Anfahren an der Ampel an?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "5 cm at a time.. (Motor aus)"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Solider Start"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Vin Diesel neidisch! 🏎️"
+      }
+    }
+  },
+  {
+    "id": 36,
+    "text": "Erreichte das Auto auf der Landstraße 88 Meilen pro Stunde?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Raum-Zeit-Kollaps!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Tempo 50 Chic"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Fluxkompensator geglüht! ⚡"
+      }
+    }
+  },
+  {
+    "id": 37,
+    "text": "Welcher Klassiker lief stumm im Kopf des Beifahrers?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "AC/DC – Highway to Hell 🔥"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Helene – Atemlos.."
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Queen – Don't Stop Me Now! 🎸"
+      }
+    }
+  },
+  {
+    "id": 38,
+    "text": "Wie lief das seitliche Einparken in die enge Lücke?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Tom Cruise weint leise 😭"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Knapp geschafft"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Stunt des Monats! 🕵️‍♂️"
+      }
+    }
+  },
+  {
+    "id": 39,
+    "text": "Wie verlief der Beschleunigungsstreifen auf die Autobahn?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "LKW im Nacken! 😱"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Brav eingeordnet"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Hyperraum-Sprung! 🌌"
+      }
+    }
+  },
+  {
+    "id": 40,
+    "text": "Was passierte mit dem Becher im Getränkehalter bei Kopfsteinpflaster?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "T-Rex Vibrationen! 🦖"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Leichtes Wackeln"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Keine einzige Welle! 🥤"
+      }
+    }
+  },
+  {
+    "id": 41,
+    "text": "Wie lief das Ausweichen beim Falschparker auf der Straße?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Eisberg voraus! 🚢"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Vorbeigezirkelt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Königin-der-Welt-Linie!"
+      }
+    }
+  },
+  {
+    "id": 42,
+    "text": "Wie war die Lautstärke & Stimmung bei Johannas Playlist?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Krawall & Remmidemmi!"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Hintergrund-Mucke"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Leider geil! 🔥"
+      }
+    }
+  },
+  {
+    "id": 43,
+    "text": "Das Gasgeben direkt nach dem Ortsschild?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Master of Puppets (Schrei!)"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "Zügig beschleunigt"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Gimme Fuel, Gimme Fire! 🎸"
+      }
+    }
+  },
+  {
+    "id": 44,
+    "text": "Navigation durch den ersten Kreisverkehr der Fahrt?",
+    "answers": {
+      "bad": {
+        "emoji": "😬",
+        "label": "Gleis 9 ¾ in der Hecke! 🧹"
+      },
+      "ok": {
+        "emoji": "😐",
+        "label": "2. Ausfahrt genommen"
+      },
+      "good": {
+        "emoji": "😎",
+        "label": "Magisch durchgeglitten! 🔮"
+      }
+    }
+  }
 ]

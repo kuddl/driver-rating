@@ -1,4 +1,4 @@
-# 🚗 Johannas Fahrt-Check
+# Johannas Fahrt-Check 🚗
 
 Willkommen im Auto! Hier wird Johanna hinterm Lenkrad bewertet. Mitfahrer scannen einen QR-Code, beantworten fünf zufällige Fragen mit 😬 😐 😎 und bekommen ein geheimes Pseudonym wie *Schwarzer Kater* oder *Tanzende Eule*. Johanna sieht die Ergebnisse später in der Auswertung.
 

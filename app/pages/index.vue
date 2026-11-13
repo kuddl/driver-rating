@@ -107,6 +107,7 @@ onMounted(loadStatus);
       <template v-else-if="phase === 'garage'">
         <div class="frame">
           <h1>JOHANNAS FAHRT-CHECK</h1>
+          <img class="art art-car" src="/art/car.png" alt="Auto" />
           <div class="card garage">
             🏠🔒
             <p>Johanna fährt gerade nicht Auto, hat keine Fahrt.</p>
